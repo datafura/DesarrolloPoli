@@ -1,19 +1,23 @@
-
 const mysql = require('mysql');
-const conBD = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'Semilleros',
-    port: 3306
+
+var con = mysql.createConnection({
+   host: "localhost",
+   user: "root",
+   password: "",
+   database: "Semilleros"
  });
- conBD.connect(function(error){
-    if(error){
-       console.log('tenemos un error de conexion con la base de datos');
-    }else{ 
-       console.log('Conexion a la base de datos correcta.');
-    }
+ 
+ con.connect(function(err) {
+   if (err) throw err;
+   console.log("Connected!");
+   var sql = "INSERT into Usuario (Nombre_Usuario, Apellido_Usuario, Telefono_Usuario,Rol_Usuario,Email_Usuario,Cedula_Usuario,Contrasena_Usuario) VALUES ('mbjkkteo', 'astroz', '1263', 'dwdq', 'dafur802@gmail.com', '02106', 'oswsq')";
+   con.query(sql, function (err, result) {
+     if (err) throw err;
+     console.log("Usuario creado correctamente");
+   });
  });
+
+
  module.exports = {
-    "conBD": conBD
-}
+    "con": con
+ }
