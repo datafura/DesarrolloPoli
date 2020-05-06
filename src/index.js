@@ -13,7 +13,8 @@ app.set('view engine', 'ejs');
 
 //importacion de rutas
 app.use(require('./routes/'));
-
+//conexion a la bd
+const conn = require(path.join(__dirname, 'server/bdconnection/index'))
 
 
 
